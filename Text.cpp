@@ -39,10 +39,12 @@ void Text::render(int x, int y)
 
 }
 
+//Do not pass  concatatenate strings in here!!!
 void Text::update_text(std::string text)
 {
 	font_ = TTF_OpenFont(font_path_.c_str(), font_size_);
 	if (!font_) { Utilities::print_error(); } 
+	//text += " ";
 	SDL_Surface* temp_text_surface = TTF_RenderText_Solid(font_, text.c_str(), color_);
 	if (!temp_text_surface) { Utilities::print_error(); }
 

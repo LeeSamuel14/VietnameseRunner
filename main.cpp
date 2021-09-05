@@ -8,6 +8,9 @@
 #include <SDL_mixer.h>
 #include "Game.h"
 #include "IGraphics.h"
+#include "Window.h"
+#include "GameInit.h"
+#include "Init.h"
 
 void init_SDL()
 {
@@ -57,7 +60,8 @@ int main(int argc, char* args[]) {
     {
         //std::cout << Engine::IGraphics::t;
         init_SDL();
-        Game game{ };
+        Engine::Init* init = new Engine::Init();
+        //Game game{ };
         //game->init_game_loop();
         close_SDL();
     }

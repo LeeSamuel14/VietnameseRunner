@@ -13,7 +13,7 @@ Game::Game()
 	renderer_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (!renderer_) { Utilities::print_error(); }
 	SDL_SetRenderDrawColor(renderer_, 0xFF, 0x00, 0xFF, 0xFF);
-	init_game_loop();
+	init_game_loop_2();
 }
 
 Game::~Game()
@@ -33,10 +33,42 @@ void Game::init_game_loop()
 {
 	bool quit{ false };
 	SDL_Event event{};
+	SDL_Rect rect{ SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+	while (!quit)
+	{
+		while (SDL_PollEvent(&event) != 0)
+		{
+			switch (event.type)
+			{
+			case SDL_QUIT:
+				quit = true;
+				break;
+			case SDL_KEYDOWN:
+				quit = true;
+				break;
+			case SDL_MOUSEMOTION:
+				break;
+			}
+		}
+
+		SDL_RenderClear(renderer_);
+		SDL_RenderPresent(renderer_);
+	}
+}
+
+void Game::init_game_loop_2()
+{
+	bool quit{ false };
+	SDL_Event event{};
 	Uint32 times_mouse_moved{};
 	SDL_Rect rect { SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 	int seconds{ 0 };
 	int minutues{ 0 };
+	int counted_frames { 0 };
+	double avg_fps { 0.0 };
+
+	Timer fps_timer{ };
+	fps_timer.start();
 	Text ui_text { 
 					renderer_, 
 					"Roblox.ttf", 
@@ -51,14 +83,29 @@ void Game::init_game_loop()
 					"Time",
 					{135, 67, 150}
 	};
+	Text timer_text {
+					renderer_,
+					"Roblox.ttf",
+					80,
+					"Time",
+					{135, 67, 150}
+	};
+	Text fps_timer_text {
+					renderer_,
+					"Roblox.ttf",
+					80,
+					"FPS",
+					{80, 120, 40}
+	};
 	Time time{ };
-	Animation walking_man	{ 
-								renderer_, 
-								8, 
-								100, 
-								100, 
-								std::string {"tut-pics/walking-animation.png"} 
-							};
+	Timer timer{};
+	Animation walking_man { 
+					renderer_, 
+					8, 
+					100, 
+					100, 
+					std::string {"tut-pics/walking-animation.png"} 
+	};
 	Sound tap { "high.wav", true };
 	Sound background_music{ "wind.wav", false };
 	background_music.play(-1);
@@ -89,7 +136,17 @@ void Game::init_game_loop()
 					man_x_pos += 15;
 				if (event.key.keysym.sym == SDLK_LEFT)
 					man_x_pos -= 15;
-				tap.play(0);
+				if (event.key.keysym.sym == SDLK_s)
+					if (timer.is_started())
+						timer.stop();
+					else
+						timer.start();
+				if (event.key.keysym.sym == SDLK_p)
+					if (timer.is_paused())
+						timer.unpause();
+					else
+						timer.pause();
+				//tap.play(0);
 				break;
 			case SDL_MOUSEMOTION:
 				if (rect.x > SCREEN_WIDTH)
@@ -120,9 +177,16 @@ void Game::init_game_loop()
 		{
 			time_text.update_text(std::to_string(time.get_time_text()));
 		}
+
+		timer_text.update_text(std::to_string( timer.get_ticks() / 1000));
+
+		avg_fps = counted_frames / (fps_timer.get_ticks() / 1000.00);
+		fps_timer_text.update_text(std::to_string(avg_fps));
 		//time_text.update_text(std::to_string(time.get_time_text()));
 		//std::cout << std::to_string(time.get_time_text()) <<'\n';
-		time_text.render(100, 100);
+		//time_text.render(100, 100);
+		timer_text.render(100, 100);
+		fps_timer_text.render(0, 200);
 		ui_text.render(0, 0);
 		SDL_RenderPresent(renderer_);
 		++seconds;
@@ -134,6 +198,7 @@ void Game::init_game_loop()
 		//render_shape(&rect);
 		//render_image();
 		//render_viewport();
+		++counted_frames;
 	}
 }
 

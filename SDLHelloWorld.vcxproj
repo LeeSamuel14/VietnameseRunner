@@ -151,25 +151,43 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameInit.cpp" />
     <ClCompile Include="Game_Window.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="IGraphics.cpp" />
+    <ClCompile Include="Init.cpp" />
+    <ClCompile Include="IPhysics.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="Velocity.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameInit.h" />
     <ClInclude Include="Game_Window.h" />
+    <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="IGraphics.h" />
+    <ClInclude Include="Init.h" />
+    <ClInclude Include="IPhysics.h" />
+    <ClInclude Include="PhysicsComponent.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Utilities.h" />
+    <ClInclude Include="Velocity.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

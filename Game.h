@@ -7,6 +7,7 @@
 #include "Animation.h"
 #include "Text.h"
 #include "Sound.h"
+#include "Timer.h"
 
 class Game
 {
@@ -31,6 +32,7 @@ public:
 	Game();
 	~Game();
 	void init_game_loop();
+	void init_game_loop_2();
 	SDL_Renderer* get_renderer();
 
 };

@@ -4,7 +4,7 @@ namespace Engine
 	class IGraphics
 	{
 		public:
-			static const int t = 980;
+			virtual void render() = 0;
 	};
 }
 
