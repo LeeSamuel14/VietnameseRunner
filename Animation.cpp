@@ -30,7 +30,7 @@ void Animation::render(int x, int y)
 {
 
 	SDL_Rect frame_position = frames_[current_frame_/ frame_total_count_];
-	SDL_Rect render_position = { x, y, frame_width_, frame_height_ }; //100 needs to passed in as a paramter. As this this is relative to the window
+	SDL_Rect render_position = { x, y, frame_width_, frame_height_ };
 	SDL_RenderCopy(renderer_, sprite_sheet_, &frame_position, &render_position);
 	current_frame_++;
 	if (current_frame_ / frame_total_count_ >= frame_total_count_)

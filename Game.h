@@ -26,13 +26,11 @@ private:
 	void render_image();
 	void render_shape(SDL_Rect* rect);
 	void render_viewport();
-	void color_keying_alpha();
 
 public:
 	Game();
 	~Game();
 	void init_game_loop();
-	void init_game_loop_2();
 	SDL_Renderer* get_renderer();
 
 };

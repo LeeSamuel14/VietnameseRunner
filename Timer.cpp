@@ -12,7 +12,7 @@ void Timer::start()
 {
 	started_ = true;
 	paused_ = false;
-	start_ticks_ = SDL_GetTicks(); //returns the number of milliseconds since SDL init.
+	start_ticks_ = SDL_GetTicks();
 	paused_ticks_ = 0;
 }
 

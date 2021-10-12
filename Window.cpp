@@ -8,12 +8,11 @@ void Engine::Window::create()
 	int SCREEN_WIDTH { 1000 };
 	int SCREEN_HEIGHT { 400 };
 	window = SDL_CreateWindow("Engine::Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	if (!window) { std::cout << "Error with Window"; }; // @todo create error static class
+	if (!window) { std::cout << "Error with Window"; };
 }
 
 void Engine::Window::destroy()
 {
-	//@todo make sure it is getting called
 	if(Engine::Window::window)
 		SDL_DestroyWindow(window);
 }

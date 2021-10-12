@@ -10,7 +10,6 @@ namespace Engine
 	class GraphicsComponent : Interfaces::IGraphics
 	{
 		private:
-			//Engine::GameObject* game_object_;
 			Engine::Types::Graphics::Sprite* sprite_;
 
 		public:

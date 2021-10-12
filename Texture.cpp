@@ -47,8 +47,6 @@ void Texture::set_transparent_background(SDL_Surface* surface, Uint8 r, Uint8 g,
 
 void Texture::render(int x, int y)
 {
-	//SDL_SetTextureAlphaMod(texture_, 100);
-	//SDL_SetTextureColorMod(texture_, 0, 150, 150);
 	if (texture_ != nullptr)
 	{
 		SDL_Rect render_position{ x, y, width_, height_ };

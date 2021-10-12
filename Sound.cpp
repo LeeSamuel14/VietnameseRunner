@@ -30,5 +30,5 @@ void Sound::play(int loop)
 	if (chunk_)
 		Mix_PlayChannel(-1, chunk_, loop);
 	if (music_)
-		Mix_PlayMusic(music_, loop); //-1 means loop forever
+		Mix_PlayMusic(music_, loop);
 }

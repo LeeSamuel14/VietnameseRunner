@@ -4,7 +4,6 @@ void Engine::GameInit::init_game_loop()
 {
 	bool quit{ false };
 	SDL_Event event{};
-	//SDL_Rect rect{ SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 	while (!quit)
 	{
 		while (SDL_PollEvent(&event) != 0)
