@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "Window.h"
 #include "Renderer.h"
+#include "GameObject.h"
 namespace Engine
 {
 	class Init
@@ -14,6 +15,7 @@ namespace Engine
 			void init_game_loop();
 		public:
 			Init();
+			~Init();
 	};
 }
 

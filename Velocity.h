@@ -1,12 +1,16 @@
 #pragma once
 namespace Engine {
-	namespace PhysicsType
+	namespace Types
 	{
-		struct Velocity
+		namespace Physics
 		{
-			double degree;
-			double speed;
-		};
+			struct Velocity
+			{
+				double direction;
+				double speed;
+			};
+		}
+		
 	}
 	 
 }

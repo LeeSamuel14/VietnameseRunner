@@ -185,9 +185,9 @@ void Game::init_game_loop_2()
 		//time_text.update_text(std::to_string(time.get_time_text()));
 		//std::cout << std::to_string(time.get_time_text()) <<'\n';
 		//time_text.render(100, 100);
-		timer_text.render(100, 100);
-		fps_timer_text.render(0, 200);
-		ui_text.render(0, 0);
+		//timer_text.render(100, 100);
+		//fps_timer_text.render(0, 0);
+		//ui_text.render(0, 0);
 		SDL_RenderPresent(renderer_);
 		++seconds;
 		if (seconds % 10 == 0)

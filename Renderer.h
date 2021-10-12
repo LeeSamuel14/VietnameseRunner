@@ -6,14 +6,11 @@ namespace Engine
 {
 	class Renderer
 	{
-	private:
-		Engine::Window* window_;
-		SDL_Renderer* renderer_;
 
-	public:
-		Renderer(Engine::Window* window);
-		~Renderer();
-		SDL_Renderer* get_renderer();
+		public:
+			static SDL_Renderer* renderer;
+			static void create();
+			static void destroy();
 	};
 
 }

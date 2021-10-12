@@ -1,11 +1,15 @@
 #pragma once
 namespace Engine
 {
-	class IGraphics
+	namespace Interfaces
 	{
-		public:
-			virtual void render() = 0;
-	};
+		class IGraphics
+		{
+			public:
+				virtual void update() = 0;
+		};
+	}
+	
 }
 
 

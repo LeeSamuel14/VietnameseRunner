@@ -1,21 +1,19 @@
 #include "Window.h"
 #include <iostream>
 
-Engine::Window::Window()
-	:	SCREEN_WIDTH { 1000 },
-		SCREEN_HEIGHT { 400 }
+SDL_Window* Engine::Window::window = nullptr;
+
+void Engine::Window::create()
 {
-	window_ = SDL_CreateWindow("Engine::Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-	if (!window_) { std::cout << "Error"; };
-	
+	int SCREEN_WIDTH { 1000 };
+	int SCREEN_HEIGHT { 400 };
+	window = SDL_CreateWindow("Engine::Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	if (!window) { std::cout << "Error with Window"; }; // @todo create error static class
 }
 
-Engine::Window::~Window()
+void Engine::Window::destroy()
 {
-	SDL_DestroyWindow(window_);
-}
-
-SDL_Window* Engine::Window::get_window()
-{
-	return window_;
+	//@todo make sure it is getting called
+	if(Engine::Window::window)
+		SDL_DestroyWindow(window);
 }

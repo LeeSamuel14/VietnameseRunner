@@ -58,11 +58,8 @@ void close_SDL()
 int main(int argc, char* args[]) {
     try
     {
-        //std::cout << Engine::IGraphics::t;
         init_SDL();
-        Engine::Init* init = new Engine::Init();
-        //Game game{ };
-        //game->init_game_loop();
+        Game game{ };
         close_SDL();
     }
     catch (const std::exception& e)

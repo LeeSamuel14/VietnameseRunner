@@ -1,18 +1,15 @@
 #include "Renderer.h"
 
-Engine::Renderer::Renderer(Engine::Window* window)
+SDL_Renderer* Engine::Renderer::renderer = nullptr;
+
+void Engine::Renderer::create()
 {
-	renderer_ = SDL_CreateRenderer(window->get_window(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (!renderer_) { std::cout << "Error"; };
-	SDL_SetRenderDrawColor(renderer_, 0xFF, 0x56, 0x125, 0xFF);
+	renderer = SDL_CreateRenderer(Engine::Window::window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	if (!renderer) { std::cout << "Error with renderer"; };  //@todo create error static class
+	SDL_SetRenderDrawColor(renderer, 0x80, 0x140, 0x170, 0x200);
 }
 
-Engine::Renderer::~Renderer()
+void Engine::Renderer::destroy()
 {
-	SDL_DestroyRenderer(renderer_);
-}
-
-SDL_Renderer* Engine::Renderer::get_renderer()
-{
-	return renderer_;
+	SDL_DestroyRenderer(renderer);
 }

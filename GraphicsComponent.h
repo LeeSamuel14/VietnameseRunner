@@ -1,14 +1,23 @@
 #pragma once
 #include "Renderer.h"
 #include "IGraphics.h"
+#include "Sprite.h"
+#include "GameObject.h"
+#include <string>
+
 namespace Engine
 {
-	class GraphicsComponent : IGraphics
+	class GraphicsComponent : Interfaces::IGraphics
 	{
 		private:
-			//Engine::Renderer* renderer_ = Engine::Engine::renderer;
+			//Engine::GameObject* game_object_;
+			Engine::Types::Graphics::Sprite* sprite_;
+
 		public:
-			virtual void render() override;
+			GraphicsComponent(std::string path);
+			virtual void update() override;
+			Engine::Types::Graphics::Sprite* get_sprite() { return sprite_; };
+
 	};
 }
 
